@@ -27,7 +27,7 @@
 .restro-container {
   display: flex;
   flex-wrap: wrap;
-  row-gap: 12px;
+  row-gap: 20px;
   column-gap: 12px;
   justify-content: space-around;
 }
@@ -36,11 +36,10 @@
   width: 15%;
   border-radius: 10px;
   padding: 10px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  background-color: #fff;
+  height: 20%; /* Let content define height */
 }
 
 .restro-card:hover {
@@ -50,9 +49,16 @@
 
 .restro-logo {
   width: 100%;
-  height: 50%;
+  height: 150px;
   border-radius: 10px;
+  overflow: hidden;
+}
+
+.restro-logo img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .card-title {
