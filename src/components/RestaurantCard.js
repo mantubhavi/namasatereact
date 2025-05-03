@@ -21,7 +21,7 @@ const RestaurantCard = (props) => {
         alt="Meghana Foods"
       />
       <h4>{name}</h4>
-      <h5 className="card-title">{cuisines.join(", ")}</h5>
+      <h5 className="card-msg">{cuisines.join(", ")}</h5>
       <h5>{avgRatings} stars</h5>
       <h5>
         &#8377;
