@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
-import restaurantList from "../utils/mockData";
 import { BASE_URL } from "../utils/constants";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRestros, setListOfRestros] = useState([]);
@@ -13,15 +13,15 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(BASE_URL);
     const jsonConvertedData = await data.json();
-    // console.log(
-    //   jsonConvertedData.data.cards[4].card.card.gridElements.infoWithStyle
-    //     .restaurants
-    // );
     setListOfRestros(
       jsonConvertedData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
   };
+
+  if (listOfRestros.length === 0) {
+    return <Shimmer />;
+  }
 
   return (
     <div className="body">
@@ -39,12 +39,9 @@ const Body = () => {
         </button>
       </div>
       <div className="restro-container">
-        {listOfRestros.map(
-          (restro) => (
-            <RestaurantCard key={restro.info.id} resData={restro.info} />
-          )
-          // console.log(restro.info)
-        )}
+        {listOfRestros.map((restro) => (
+          <RestaurantCard key={restro.info.id} resData={restro.info} />
+        ))}
       </div>
     </div>
   );
