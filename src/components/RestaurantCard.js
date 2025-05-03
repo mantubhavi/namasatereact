@@ -3,15 +3,8 @@ import { IMG_URL } from "../utils/constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
-
-  const {
-    cloudinaryImageId,
-    name,
-    cuisines,
-    avgRatings,
-    costForTwo,
-    deliveryTime,
-  } = resData?.data;
+  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } =
+    resData;
 
   return (
     <div className="restro-card">
@@ -20,14 +13,11 @@ const RestaurantCard = (props) => {
         src={`${IMG_URL}${cloudinaryImageId}`}
         alt="Meghana Foods"
       />
-      <h4>{name}</h4>
-      <h5 className="card-msg">{cuisines.join(", ")}</h5>
-      <h5>{avgRatings} stars</h5>
-      <h5>
-        &#8377;
-        {costForTwo / 100} For Two
-      </h5>
-      <h5>{deliveryTime} mins</h5>
+      <h4 className="card-msg">{name}</h4>
+      <h5 className="card-msg text-gray">{cuisines.join(", ")}</h5>
+      <h5>{avgRating} stars</h5>
+      <h5>{costForTwo}</h5>
+      <h5>{sla.deliveryTime} mins</h5>
     </div>
   );
 };
