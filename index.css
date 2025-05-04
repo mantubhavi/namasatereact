@@ -20,7 +20,7 @@
 } */
 
 .logo {
-  width: 100px;
+  width: 85px;
   mix-blend-mode: multiply;
   opacity: 1;
 }
@@ -59,8 +59,8 @@
 }
 
 .restro-card:hover {
-  transform: scale(0.95); /* slightly enlarges the card on hover */
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* enhances the shadow on hover */
+  transform: scale(0.95);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .restro-logo {
@@ -87,13 +87,37 @@
   color: gray;
 }
 
-.search {
-  padding: 20px;
+.search input[type="text"] {
+  padding: 0 10px;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  border: 1px solid gray;
+}
+
+.search button {
+  margin: 0 10px;
+  padding: 0 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  border: 1px solid gray;
+  font-weight: bold;
+  font-size: 12px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.filter {
+  display: flex;
+  gap: 2px;
+  padding: 5px 10px;
+  margin: 20px 20px;
 }
 
 .filter-btn {
-  margin: 20px 20px;
-  padding: 5px 10px;
+  margin: 0 10px;
+  padding: 0 10px;
   cursor: pointer;
   border-radius: 10px;
   background: #fff;
@@ -110,7 +134,7 @@
   flex-wrap: wrap;
   gap: 25px;
   margin: 20px;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .shimmer-card {
@@ -135,4 +159,13 @@
   100% {
     background-position: 800px 0;
   }
+}
+
+.nav-items button {
+  padding: 0 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  background: green;
+  border: none;
 }

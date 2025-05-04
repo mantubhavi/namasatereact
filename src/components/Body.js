@@ -5,6 +5,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRestros, setListOfRestros] = useState([]);
+  const [filteredListOfRestro, setFilteredListOfRestro] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -17,21 +19,42 @@ const Body = () => {
       jsonConvertedData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
+    setFilteredListOfRestro(
+      jsonConvertedData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
 
-  if (listOfRestros.length === 0) {
-    return <Shimmer />;
-  }
-
-  return (
+  return listOfRestros.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
-      {/* <div className="search">Search</div> */}
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              const fileteredRestro = listOfRestros.filter((restro) =>
+                restro?.info?.name
+                  ?.toLowerCase()
+                  .includes(searchText.toLowerCase())
+              );
+              setFilteredListOfRestro(fileteredRestro);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
-            setListOfRestros(
-              listOfRestros?.filter((res) => res.info.avgRating > 4.1)
+            setFilteredListOfRestro(
+              filteredListOfRestro?.filter((res) => res?.info?.avgRating > 4.1)
             );
           }}
         >
@@ -39,7 +62,7 @@ const Body = () => {
         </button>
       </div>
       <div className="restro-container">
-        {listOfRestros.map((restro) => (
+        {filteredListOfRestro?.map((restro) => (
           <RestaurantCard key={restro.info.id} resData={restro.info} />
         ))}
       </div>
