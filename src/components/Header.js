@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { APP_LOGO } from "../utils/constants";
+import { APP_LOGO } from "../utils/constants/constants";
 import { Link } from "react-router";
+import useOnlineStatus from "../hooks/useOnlineStatus";
 
 const Header = () => {
   const [loginStatus, setLoginStatus] = useState("Login");
+  const status = useOnlineStatus();
 
   return (
     <div className="header">
@@ -12,6 +14,7 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
+          <li>Status: {status ? "🟢" : "🔴"}</li>
           <li>
             <Link to="/">Home</Link>
           </li>

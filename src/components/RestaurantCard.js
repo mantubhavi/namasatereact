@@ -1,5 +1,4 @@
-import React from "react";
-import { IMG_URL } from "../utils/constants";
+import { IMG_URL } from "../utils/constants/constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
